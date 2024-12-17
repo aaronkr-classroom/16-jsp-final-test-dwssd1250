@@ -7,12 +7,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>UT-NodeJS 중간고사 | Register</title>
+    <title>DJU 중간고사 | Register</title>
 
     <!-- 학생 이름과 학번 -->
     <meta name="author" content="???" />
     <meta name="description" content="???" />
-
+    
     <!-- CSS 파일에 대한 link테그를 수정하십시오 -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/style.css" />
     <link
@@ -26,6 +26,89 @@
     <!-- JS 파일에 대한 script테그를 수정하십시오 -->
     <script defer src="${pageContext.request.contextPath}/public/js/functions.js"></script>
   </head>
+
+  <script type="text/javascript">
+  	function checkform(){
+  		let form = document.getElementById("loginForm");
+		let name = document.getElementById("input_name");
+		let pw = document.getElementById("input_pw");
+		let email = document.getElementById("input_email");
+		let phone = document.getElementById("input_phone");
+		
+		let name_value = name.value;
+		let pw_value = pw.value;
+		let email_value = email.value;
+		let phone_value = phone.value;
+		
+		if(name.value==""){
+			alert("이름을 입력하세요!");
+			name.select();
+			name = name.value;
+			return;
+		}
+		else{
+			for(let i =0; i<name.value.length; i++){
+				let ch = name.value.charAt(i);
+				console.log(ch);
+				
+				if((ch>'a'||ch<'z') && (ch>'A' || ch<'Z') && (ch>'0' || ch<'9')){
+					alert("이름은 영문 소문자만 입력 가능합니다.");
+					name.select();
+					name_value = name.value;
+					return;
+				}
+			}
+		}
+		//////////////////////////////
+		if(pw.value==""){
+			alert("비밀번호를 입력하세요!");
+			pw.select();
+			pw_value = pw.value;
+			return;
+		}
+		else if(pw.value.length <= 4 || pw.value.length >= 12){
+			alert("비밀번호는 4~12자 이내로 입력 가능합니다.");
+			pw.select();
+			pw_value = pw.value;
+			return;
+		}
+		else if(isNaN(pw.value)){
+			alert("비밀번호는 숫자만 입력 가능합니다.");
+			pw.select();
+			pw_value = pw.value;
+			return;
+		}
+		//////////////////////////////
+		if(email.value==""){
+			alert("이메일을 입력하세요!");
+			email.select();
+			email_value = email.value;
+			return;
+		}
+		
+		//////////////////////////////
+		if(phone.value==""){
+			alert("전화번호를 입력하세요!");
+			phone.select();
+			phone_value = phone.value;
+			return;
+		}
+		else if(phone.value.length != 11){
+			alert("전화번호 11자리를 입력해 주세요.");
+			phone.select();
+			phone_value = phone.value;
+			return;
+		}
+		else if(isNaN(phone.value)){
+			alert("전화번호는 숫자만 입력 가능합니다.");
+			phone.select();
+			phone_value = phone.value;
+			return;
+		}
+		
+		form.submit();
+  	}
+  </script>
 
   <body>
     <!-- HEADER -->
@@ -49,43 +132,20 @@
           <div class="col-md-10 mx-auto col-lg-5 mb-5">
 
             <!-- action 속성에서 맞는 파일 경로 입력하세요 -->
-            <form
-              class="p-4 p-md-5 border rounded-3 bg-light"
-              action="./thanks.jsp"
-              method="POST"
-            >
+            <form class="p-4 p-md-5 border rounded-3 bg-light" action="./thanks.jsp" method="POST" >
               <div class="form-floating mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="floatingName"
-                  placeholder="Name"
-                />
-                <label for="floatingName">Name</label>
+                <input type="text" class="form-control" id="input_name" placeholder="Name" />
+                <label for="input_name">Name</label>
               </div>
 
               <div class="form-floating mb-3">
-                <input
-                  type="email"
-                  class="form-control"
-                  id="floatingEmail"
-                  name="email"
-                  placeholder="name@example.com"
-                  required
-                />
-                <label for="floatingEmail">Email address</label>
+                <input type="email" class="form-control" id="input_email" name="email" placeholder="name@example.com" required />
+                <label for="input_email">Email address</label>
               </div>
 
               <div class="form-floating mb-3">
-                <input
-                  type="tel"
-                  class="form-control"
-                  id="floatingPhone"
-                  name="phone"
-                  placeholder="Phone"
-                  required
-                />
-                <label for="floatingPhone">Phone</label>
+                <input type="tel" class="form-control" id="input_phone" name="phone" placeholder="Phone" required />
+                <label for="input_phone">Phone</label>
               </div>
 
               <hr>
@@ -110,11 +170,11 @@
 
               <div class="row mb-3">
                 <div class="col">
-                  <input type="password" class="form-control" name="password" placeholder="Password" required />
+                  <input type="password" class="form-control" id="input_pw" name="password" placeholder="Password" required />
                 </div>
               </div>
 
-              <button class="w-100 btn btn-lg btn-primary ut-red" type="submit">
+              <button class="w-100 btn btn-lg btn-primary ut-red" type="submit" onclick="checkForm()">
                 Submit
               </button>
               <hr />

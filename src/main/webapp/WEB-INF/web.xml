@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-error-page>/login_failed.jsp</form-error-page>
+		</form-login-config>
+	</login-config>
+</web-app>
