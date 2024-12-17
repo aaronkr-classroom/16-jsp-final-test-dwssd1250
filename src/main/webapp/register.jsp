@@ -7,7 +7,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>DJU 중간고사 | Register</title>
+    <title>DJU 기말고사 | Register</title>
 
     <!-- 학생 이름과 학번 -->
     <meta name="author" content="???" />
